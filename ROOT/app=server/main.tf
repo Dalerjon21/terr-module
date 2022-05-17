@@ -8,5 +8,5 @@ module "app-vpc" {
 }
 
 module "app-server" {
-  source = "https://github.com/Dalerjon21/terr-module.git//CHILD/EC2"
+  source = "git::https://github.com/Dalerjon21/terr-module.git//CHILD/EC2"
 }
