@@ -7,3 +7,6 @@ module "app-vpc" {
   tag = "app"
 }
 
+module "app-server" {
+  source = "https://github.com/Dalerjon21/terr-module.git//CHILD/EC2"
+}
