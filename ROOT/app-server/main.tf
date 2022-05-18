@@ -10,3 +10,4 @@ module "app-vpc" {
 module "app-server" {
   source = "git::https://github.com/Dalerjon21/terr-module.git//CHILD/EC2"
 }
+
