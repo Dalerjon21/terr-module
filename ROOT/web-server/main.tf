@@ -1,0 +1,22 @@
+
+module "web-vpc" {
+  source = "../../CHILD/VPC"
+  vpc_cidr = "30.0.0.0/16"
+  pub_cidr = "30.0.1.0/24"
+  prv_cidr = "30.0.2.0/24"
+  tag = "web"
+}
+
+module "web-server" {
+  source = "git::https://github.com/Dalerjon21/terr-module.git//CHILD/EC2"
+  subnet_id = module.web-vpc.public_subnet_id
+  server_tag = "web-server"
+#   instance_type = "t2.large"
+}
+
+module "prod-server" {
+  source = "git::https://github.com/Dalerjon21/terr-module.git//CHILD/EC2"
+  subnet_id = module.web-vpc.private_subnet_id
+  server_tag = "prod-server"
+  instance_type = var.ec2_type
+}
